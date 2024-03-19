@@ -1,0 +1,71 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[addons]
+
+resources_spreadsheet_view/array_color_tint=100.0
+resources_spreadsheet_view/color_rows=true
+resources_spreadsheet_view/array_min_width=128.0
+resources_spreadsheet_view/resource_preview_size=32.0
+resources_spreadsheet_view/clip_headers=false
+resources_spreadsheet_view/dupe_arrays=true
+resources_spreadsheet_view/context_menu_on_leftclick=false
+
+[application]
+
+config/name="Bunny Party"
+run/main_scene="res://files/Scenes/main.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="Bunny Party"
+config/features=PackedStringArray("4.2", "Forward Plus")
+run/max_fps=300
+boot_splash/bg_color=Color(0.0509804, 0.0509804, 0.0509804, 1)
+boot_splash/show_image=false
+config/icon="res://icon.svg"
+
+[debug]
+
+file_logging/max_log_files=3
+gdscript/warnings/shadowed_variable=0
+gdscript/warnings/shadowed_variable_base_class=0
+gdscript/warnings/shadowed_global_identifier=0
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/mode=3
+window/size/borderless=true
+window/stretch/mode="canvas_items"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_resource_groups/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://files/": "gray",
+"res://files/Models/": "yellow",
+"res://files/Resources/": "orange",
+"res://files/System/": "purple",
+"res://files/System/Audio/": "blue",
+"res://files/System/Audio/Music/": "pink",
+"res://files/System/Audio/SFX/": "gray",
+"res://files/System/Images/": "yellow"
+}
+
+[filesystem]
+
+import/blender/enabled=false
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0.0352941, 0.0352941, 0.0352941, 1)

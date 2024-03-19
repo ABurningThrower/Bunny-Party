@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://di2p5xsd3rgkw"]
+
+[ext_resource type="Script" path="res://files/Scenes/in_game.gd" id="1_slsv7"]
+[ext_resource type="PackedScene" uid="uid://dlc1t732o5tf4" path="res://files/Scenes/tile.tscn" id="2_fivil"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_xc5mw"]
+
+[sub_resource type="Sky" id="Sky_0j2lb"]
+sky_material = SubResource("PhysicalSkyMaterial_xc5mw")
+
+[sub_resource type="Environment" id="Environment_xjjxt"]
+sky = SubResource("Sky_0j2lb")
+ambient_light_source = 3
+fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_m5ypb"]
+dof_blur_far_distance = 1859.33
+dof_blur_near_distance = 2901.65
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tt3vm"]
+size = Vector3(32, 0.001, 32)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3req"]
+albedo_color = Color(0.811765, 0.580392, 0.807843, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_enwna"]
+size = Vector3(32, 0.001, 32)
+
+[node name="In-Game" type="Node3D"]
+script = ExtResource("1_slsv7")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xjjxt")
+camera_attributes = SubResource("CameraAttributesPractical_m5ypb")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.218194, -0.658249, 0.290565)
+visible = false
+fov = 37.8493
+
+[node name="StaticBody" type="StaticBody3D" parent="."]
+
+[node name="Collision" type="CollisionShape3D" parent="StaticBody"]
+shape = SubResource("BoxShape3D_tt3vm")
+
+[node name="Mesh" type="MeshInstance3D" parent="StaticBody"]
+material_override = SubResource("StandardMaterial3D_q3req")
+mesh = SubResource("BoxMesh_enwna")
+skeleton = NodePath("../Collision")
+
+[node name="Map" type="Node3D" parent="."]
+
+[node name="Tiles" type="Node3D" parent="Map"]
+
+[node name="Tile" parent="Map/Tiles" instance=ExtResource("2_fivil")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.4026, 0, 14.3173)
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="Coins" type="Node3D" parent="Objects"]
+
+[node name="Power-ups" type="Node3D" parent="Objects"]

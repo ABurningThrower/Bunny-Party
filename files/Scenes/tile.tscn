@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dlc1t732o5tf4"]
+
+[ext_resource type="Texture2D" uid="uid://36ch62x51f7q" path="res://files/System/Images/Tiles/Hunt.png" id="1_ybtfw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bulei"]
+size = Vector3(1, 0.001, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_me4qm"]
+albedo_color = Color(0.811765, 0.580392, 0.807843, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_b1xi0"]
+size = Vector3(1, 0.001, 1)
+
+[node name="Tile" type="StaticBody3D"]
+
+[node name="Collision" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_bulei")
+
+[node name="Mesh" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_me4qm")
+mesh = SubResource("BoxMesh_b1xi0")
+skeleton = NodePath("../Collision")
+
+[node name="Sprite3D" type="Sprite3D" parent="Mesh"]
+transform = Transform3D(1.95, 0, 0, 0, -8.52372e-08, 0, 0, -1.95, 0, 0, 0.001, 0)
+texture = ExtResource("1_ybtfw")
+region_rect = Rect2(0, 0, 100, 100)
+
+[node name="Border" type="Sprite3D" parent="Mesh"]
